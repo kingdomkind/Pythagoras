@@ -3,7 +3,7 @@ import webbrowser
 import pyttsx3
 
 engine = pyttsx3.init()
-
+contacts = {}
 
 
 
@@ -20,10 +20,11 @@ def contactcreator():
     email = input("Please write the email: ")
     return {"name": name, "number": number, "email": email}
 
-def listOfDetails(contactList):
+def listOfDetails():
     listOfDetails = ""
     for key, value in contactList.items():
         listofDetails += str(key) + ": " + str(value) + "\n"
+    print(listOfDetails)
 
 def help():
     print ("Here are the list of commands")
@@ -56,11 +57,11 @@ def mainstuff():
             sys.exit(0)
 
     if keyword in ("contact list", "show contacts", "contacts"):
-        listOfDetails(contactList())
+        listOfDetails()
         restart()
 
     if keyword in ("create contact"):    
-        contactList = contactcreator()
+        contacts += contactcreator()
         print ("You have created a contact")
         engine.say("You have created a contact")
         engine.runAndWait()
