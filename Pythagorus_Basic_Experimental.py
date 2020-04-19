@@ -22,7 +22,7 @@ def contactcreator():
 
 def listOfDetails():
     listOfDetails = ""
-    for key, value in contactList.items():
+    for key, value in contacts.items():
         listofDetails += str(key) + ": " + str(value) + "\n"
     print(listOfDetails)
 
@@ -65,7 +65,7 @@ def mainstuff():
         print ("You have created a contact")
         engine.say("You have created a contact")
         engine.runAndWait()
-        for key, value in contactList.items():
+        for key, value in contacts.items():
             print(str(key) + ": " + str(value))
         restart()
 
