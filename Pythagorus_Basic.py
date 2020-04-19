@@ -75,7 +75,7 @@ if keyword.startswith("search"):
     restart()
 
 if keyword in ("contact"):
-    listOfDetails()
+    listOfDetails(contactcreator())
     restart()
     
 
