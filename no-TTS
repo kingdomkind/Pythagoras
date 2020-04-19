@@ -1,0 +1,87 @@
+import sys
+import webbrowser
+
+contacts = {}
+
+def createUrlTerm(keyword, splitter):
+    searchTerm = keyword.split()[1::1]
+    urlTerm = ""
+    for i in searchTerm:
+        urlTerm += i + str(splitter)
+    return urlTerm
+
+def contactcreator():
+    name = input("Please write the name: ")
+    number = input("Please write the phone number: ")
+    email = input("Please write the email: ")
+    return {"name": name, "number": number, "email": email}
+
+def listOfDetails():
+    global contacts
+    print(contacts)
+    detailList = ""
+    for name, dictionary in contacts.items():
+        for key, value in dictionary.items():
+            detailList += str(key) + ": " + str(value) + "\n"
+        detailList += "\n"
+    print(detailList)
+
+def help():
+    print ("Here are the list of commands")
+    print ("Help - Gives a list of commands")
+    print ("Search (words) - This command allows you to search a word on a webbrowser")
+    print ("create contact - This command allows you to create a contact")
+    print ("credits - Gives a list of credits")
+
+def credits():
+    print ("This was made by Arsalan and Umar. Umar provided massive help towards the project, it would have not been possible without him.")
+
+
+print ("Hello, i am Pythagoras Basic, a genral-purpose bot.")
+
+def mainstuff():
+    global contacts
+    print("What shall i do? (type help for commands)")
+    keyword = input("")
+
+    def restart():
+        restart = input("Do you wish to restart the program?")
+        if restart in ["yes", "Yes"]:
+            mainstuff()
+        else:
+            sys.exit(0)
+
+    if keyword in ("contact list", "show contacts", "contacts"):
+        listOfDetails()
+        restart()
+
+    if keyword in ("create contact"):
+        newContact = contactcreator()
+        contacts[newContact["name"]] = newContact
+        print ("You have created a contact")
+        for key, value in newContact.items():
+            print(str(key) + ": " + str(value))
+        restart()
+
+    if keyword.startswith("search"):
+        urlTerm = createUrlTerm(keyword, "+")
+        noTerm = createUrlTerm(keyword, " ")
+        url = ("https://www.google.com/search?source=&q={}&oq={}").format(urlTerm, urlTerm)
+        webbrowser.open(url)
+        print ("Here are the search results for: " + noTerm)
+        restart()
+
+    if keyword in ("contact"):
+        listOfDetails()
+        restart()
+    
+
+    if keyword in ("help"):
+        help()
+        restart()
+
+    if keyword in ("credits"):
+        credits()
+        restart()
+
+mainstuff()
