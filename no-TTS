@@ -1,6 +1,8 @@
 import sys
 import webbrowser
+import pyttsx3
 
+engine = pyttxs.init()
 contacts = {}
 
 def createUrlTerm(keyword, splitter):
@@ -28,6 +30,8 @@ def listOfDetails():
 
 def help():
     print ("Here are the list of commands")
+    engine.say("Here are the list of commands")
+    engine.runAndWait()
     print ("Help - Gives a list of commands")
     print ("Search (words) - This command allows you to search a word on a webbrowser")
     print ("create contact - This command allows you to create a contact")
@@ -38,10 +42,14 @@ def credits():
 
 
 print ("Hello, i am Pythagoras Basic, a genral-purpose bot.")
+engine.say("Hello, i am Pythagoras Basic, a genral-purpose bot.")
+engine.runAndWait
 
 def mainstuff():
     global contacts
     print("What shall i do? (type help for commands)")
+    engine.say("What shall i do?")
+    engine.runAndWait()
     keyword = input("")
 
     def restart():
@@ -59,6 +67,8 @@ def mainstuff():
         newContact = contactcreator()
         contacts[newContact["name"]] = newContact
         print ("You have created a contact")
+        engine.say("You have created a contact")
+        engine.runAndWait()
         for key, value in newContact.items():
             print(str(key) + ": " + str(value))
         restart()
