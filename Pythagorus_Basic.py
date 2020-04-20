@@ -3,14 +3,7 @@ import webbrowser
 import pyttsx3
 
 engine = pyttsx3.init()
-
-def restart():
-    restart = input("Do you wish to restart the program?")
-    if restart in ["yes", "Yes"]:
-        mainstuff()
-    else:
-        sys.exit(0)
-
+contacts = {}
 
 def createUrlTerm(keyword, splitter):
     searchTerm = keyword.split()[1::1]
@@ -25,10 +18,14 @@ def contactcreator():
     email = input("Please write the email: ")
     return {"name": name, "number": number, "email": email}
 
-def listOfDetails(contactList):
-    listOfDetails = ""
-    for key, value in contactList.items():
-        listofDetails += str(key) + ": " + str(value) + "\n"
+def listOfDetails():
+    global contacts
+    detailList = ""
+    for name, dictionary in contacts.items():
+        for key, value in dictionary.items():
+            detailList += str(key) + ": " + str(value) + "\n"
+        detailList += "\n"
+    print(detailList)
 
 def help():
     print ("Here are the list of commands")
@@ -37,56 +34,64 @@ def help():
     print ("Help - Gives a list of commands")
     print ("Search (words) - This command allows you to search a word on a webbrowser")
     print ("create contact - This command allows you to create a contact")
+    print ("contact list - This command show contacts")
     print ("credits - Gives a list of credits")
 
 def credits():
     print ("This was made by Arsalan and Umar. Umar provided massive help towards the project, it would have not been possible without him.")
 
 
-print ("Hello, i am Pythagoras Basic, a genral-purpose bot.")
-engine.say("Hello, I am Pythagoras Basic, a general-purpose bot.")
-engine.runAndWait()
-print("What shall i do? (type help for commands)")
-engine.say("What shall i do?")
-engine.runAndWait()
-keyword = input("")
+print ("Hello, i am Pythagoras Basic, a general-purpose bot.")
+engine.say("Hello, i am Pythagoras Basic, a general-purpose bot.")
+engine.runAndWait
 
-if keyword in ("contact list", "show contacts", "contacts"):
-    listOfDetails(contactList)
-
-
-if keyword in ("create contact"):    
-    contactList = contactcreator()
-    print ("You have created a contact")
-    engine.say("You have created a contact")
+def mainstuff():
+    global contacts
+    print("\n""What shall i do? (type help for commands)")
+    engine.say("What shall i do?")
     engine.runAndWait()
-    for key, value in contactList.items():
-        print(str(key) + ": " + str(value))
-    restart()
+    keyword = input("")
 
-if keyword.startswith("search"):
-    urlTerm = createUrlTerm(keyword, "+")
-    noTerm = createUrlTerm(keyword, " ")
-    url = ("https://www.google.com/search?source=&q={}&oq={}").format(urlTerm, urlTerm)
-    webbrowser.open(url)
-    print ("Here are the search results for: " + noTerm)
-    engine.say("Here are the search results for " + noTerm)
-    engine.runAndWait()
-    restart()
+    def restart():
+        restart = ("yes")
+        if restart in ["yes", "Yes"]:
+            mainstuff()
+        else:
+            sys.exit(0)
 
-if keyword in ("contact"):
-    listOfDetails(contactcreator())
-    restart()
+    if keyword in ("contact list", "show contacts", "contacts"):
+        listOfDetails()
+        restart()
+
+    if keyword in ("create contact"):
+        newContact = contactcreator()
+        contacts[newContact["name"]] = newContact
+        print ("You have created a contact")
+        engine.say("You have created a contact")
+        engine.runAndWait()
+        for key, value in newContact.items():
+            print(str(key) + ": " + str(value))
+        restart()
+
+    if keyword.startswith("search"):
+        urlTerm = createUrlTerm(keyword, "+")
+        noTerm = createUrlTerm(keyword, " ")
+        url = ("https://www.google.com/search?source=&q={}&oq={}").format(urlTerm, urlTerm)
+        webbrowser.open(url)
+        print ("Here are the search results for: " + noTerm)
+        restart()
+
+    if keyword in ("contact"):
+        listOfDetails()
+        restart()
     
 
-if keyword in ("help"):
-    help()
-    restart()
+    if keyword in ("help"):
+        help()
+        restart()
 
-if keyword in ("credits"):
-    credits()
-    restart()
+    if keyword in ("credits"):
+        credits()
+        restart()
 
-
-
-
+mainstuff()
