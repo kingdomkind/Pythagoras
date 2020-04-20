@@ -2,7 +2,7 @@ import sys
 import webbrowser
 import pyttsx3
 
-engine = pyttxs.init()
+engine = pyttsx3.init()
 contacts = {}
 
 def createUrlTerm(keyword, splitter):
