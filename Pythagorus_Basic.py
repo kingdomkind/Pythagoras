@@ -2,15 +2,40 @@ import sys
 import webbrowser
 import pyttsx3
 import speech_recognition as sr
+from tkinter import *
+import time
+import os
+
+#This is a project, (originally) created by Arsalan and Umar (kingdomkind and dapawa on github). You can modify the code, and ask us to make it publicly avaivable on our github https://github.com/kingdomkind/Pythagoras
+#You cannot upload it without our consent but you can do anything for personal use. Enjoy
 
 textcheck = ""
 keyword = ""
 r = sr.Recognizer()
 engine = pyttsx3.init()
 contacts = {}
+root = Tk()
 
-#This is a project, (originally) created by Arsalan and Umar. You can modify the code, and ask us to make it publicly avaivable on our github https://github.com/kingdomkind/Pythagoras
-#You cannot upload it without our consent but you can do anything for personal use. Enjoy
+#The """ code below is to make a window appear, which displays a gif. However, to make this work you would need to rewrite at least half of the code to make it asynchronous, which is no small feat.
+#I have left it here if you want to make it work. To change the gif, just replace the direcory. If you do make it asynchronous and wish for us to post it on the github we will gladly do so. Whoever
+#contributes will have their name in the list of credits (to make the code for the gif play just simply remove the """ as everything else has already been imported).
+"""
+root.title("Pythagoras")
+
+frames = [PhotoImage(file='C:\\Users\\sabha\\source\\repos\\Window\\pythag.gif',format = 'gif -index %i' %(i)) for i in range(80)]
+
+def update(ind):
+    frame = frames[ind]
+    ind += 1
+    if ind == len(frames):
+        ind = 0
+    label.configure(image=frame)
+    root.after(100, update, ind)
+label = Label(root)
+label.pack()
+root.after(0, update, 0)
+root.mainloop()
+"""
 
 #This is the speechlist. These are the words that trigger py's speech recognition
 speechlist = ["pie", "pi", "py", "pythag", "pythug", "pythagoras", "pythugarus", "pai", "paypal", "bye", "ie", "rip", "if", "i", "reply", "hi"]
