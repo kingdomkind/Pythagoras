@@ -4,4 +4,4 @@ pyttsx3
 speechRecognition
 PyAudio
 
-You cannot redistribute this file or modify it without specific permission from the owner
+You cannot distribute this file modified or unmodified. You can modify the file specific to personal use only. If you wish to make a modified file publicly avaivable, contact me and i may put it on this github page.
