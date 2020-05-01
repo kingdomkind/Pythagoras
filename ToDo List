@@ -1,6 +1,7 @@
 1) Put web-scraping into the program so it reads you the search results
 3)Make a .exe so it can be run straight away for people who don't want to set it up
 2)Switch to CMU sphinx for a faster translation, while being more private and working offline and more constant scanning.
+4)Add a window instead of the command prompt displaying the gif and printing the text
 
 I will get around to doing these eventually, but i would be grateful if someone did them as it may take me a while. If you do
 want to help me and complete one of these, make sure to let me know and i will push the update and put you name in the list of
