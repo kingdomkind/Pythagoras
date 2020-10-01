@@ -6,7 +6,7 @@ from tkinter import *
 import time
 import os
 
-#This is a project, (originally) created by Arsalan and Umar (kingdomkind and dapawa on github). You can modify the code, and ask us to make it publicly avaivable on our github https://github.com/kingdomkind/Pythagoras
+#This is a project, (originally) created by kingdomkind and dapawa on github. You can modify the code, and ask us to make it publicly avaivable on our github https://github.com/kingdomkind/Pythagoras
 #You cannot upload it without our consent but you can do anything for personal use. Enjoy
 
 textcheck = ""
@@ -121,7 +121,7 @@ def help():
 
 #This prints out the credits
 def credits():
-    print ("This was made by Arsalan and Umar. Umar provided massive help towards the project, it would have not been possible without him.")
+    print ("This was made by kingdomkind and DaPawa")
 
 #This is the function to make the program continue after one command
 def restart():
